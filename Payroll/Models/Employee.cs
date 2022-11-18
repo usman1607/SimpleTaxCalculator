@@ -8,7 +8,7 @@ namespace Payroll.Models
 {
     public class Employee
     {
-        public string Id { get; set; }  
+        public int Id { get; set; }  
         public string StaffNo { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -17,7 +17,16 @@ namespace Payroll.Models
         public DateTime DateJoin { get; set; }
         public decimal AnnualSalary { get; set; }
 
-
-
+        public Employee(int id, string firstName, string lastName, string address, string email, DateTime dateJoin, decimal annualSalary)
+        {
+            Id = id;
+            StaffNo = $"EMP-{id.ToString("0000")}";
+            FirstName = firstName;
+            LastName = lastName;
+            Address = address;
+            Email = email;
+            DateJoin = dateJoin;
+            AnnualSalary = annualSalary;
+        }
     }
 }
