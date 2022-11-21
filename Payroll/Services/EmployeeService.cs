@@ -51,6 +51,19 @@ namespace Payroll.Services
             throw new Exception($"Employee with the id: {id} not found.");
         }
 
+        public Employee GetEmployeeByEmail(string email)
+        {
+            var employees = EmployeeRepository.employees;
+            foreach (var employee in employees)
+            {
+                if (employee.Email == email)
+                {
+                    return employee;
+                }
+            }
+            throw new Exception($"Employee with the email: {email} not found.");
+        }
+
         public List<Employee> GetEmployees()
         {
             return EmployeeRepository.employees;

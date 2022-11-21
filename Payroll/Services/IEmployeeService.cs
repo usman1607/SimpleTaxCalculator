@@ -12,5 +12,6 @@ namespace Payroll.Services
         Employee CreateEmployee(CreateEmployeeModel model);
         Employee GetEmployee(int id);
         List<Employee> GetEmployees();
+        Employee GetEmployeeByEmail(string email);
     }
 }
