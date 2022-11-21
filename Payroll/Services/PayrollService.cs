@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Payroll.Services
 {
-    public class PayrollService
+    public class PayrollService : IPayrollService
     {
     }
 }

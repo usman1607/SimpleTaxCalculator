@@ -9,9 +9,9 @@ namespace Payroll.Services
 {
     public interface IEmployeeService
     {
-        Employee CreateEmployee(CreateEmployeeModel model);
-        Employee GetEmployee(int id);
-        List<Employee> GetEmployees();
-        Employee GetEmployeeByEmail(string email);
+        EmployeeResponses CreateEmployee(CreateEmployeeModel model);
+        EmployeeResponses Get(int id);
+        EmployeesResponse GetEmployees();
+        EmployeeResponses Get(string email);
     }
 }
