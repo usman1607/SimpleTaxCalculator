@@ -20,7 +20,7 @@ namespace Payroll.Services
         public EmployeeResponses CreateEmployee(CreateEmployeeModel model)
         {
             var employees = EmployeeRepository.employees;
-            int id = employees.Count == 0 ? 1 : employees[employees.Count - 1].Id + 1;            
+            int id = employees.Count == 0 ? 1 : employees[employees.Count - 1].Id + 1;
 
             if (EmailExist(model.Email))
             {
@@ -31,8 +31,8 @@ namespace Payroll.Services
                 };
             }
 
-            if(model.AnnualSalary <= 0)
-            {                
+            if (model.AnnualSalary <= 0)
+            {
                 return new EmployeeResponses
                 {
                     Status = false,
@@ -41,7 +41,7 @@ namespace Payroll.Services
             }
 
             var dateJoin = DateTime.Now;
-            var employee = _employeeRepository.AddNewEmployee( new Employee(id, model.FirstName, model.LastName, model.Address, model.Email, dateJoin, model.AnnualSalary) );
+            var employee = _employeeRepository.AddNewEmployee(new Employee(id, model.FirstName, model.LastName, model.Address, model.Email, dateJoin, model.AnnualSalary));
 
             return new EmployeeResponses
             {
@@ -68,7 +68,7 @@ namespace Payroll.Services
             }
             return new EmployeeResponses
             {
-                Status=false,
+                Status = false,
                 Message = $"Emplyee with the id: {id} not found."
             };
         }
@@ -102,15 +102,15 @@ namespace Payroll.Services
                 Status = true,
                 Message = "Success",
                 Data = EmployeeRepository.employees
-            };            
+            };
         }
 
         private bool EmailExist(string email)
         {
             var employees = EmployeeRepository.employees;
-            foreach(var employee in employees)
+            foreach (var employee in employees)
             {
-                if(employee.Email == email)
+                if (employee.Email == email)
                 {
                     return true;
                 }

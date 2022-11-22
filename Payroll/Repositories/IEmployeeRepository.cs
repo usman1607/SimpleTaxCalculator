@@ -10,5 +10,6 @@ namespace Payroll.Repositories
     public interface IEmployeeRepository
     {
         Employee AddNewEmployee(Employee employee);
+        Employee GetEmployee(string email);
     }
 }

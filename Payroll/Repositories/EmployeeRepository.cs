@@ -17,5 +17,17 @@ namespace Payroll.Repositories
 
             return employee;
         }
+
+        public Employee GetEmployee(string email)
+        {
+            foreach (var employee in employees)
+            {
+                if(employee.Email == email)
+                {
+                    return employee;
+                }
+            }
+            return null;
+        }
     }
 }

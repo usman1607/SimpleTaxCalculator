@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Payroll.Models;
+using Payroll.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +16,7 @@ namespace Payroll.Services
 
             decimal taxableIncome = GetTaxableIncome(grossIncome);
 
-            if(taxableIncome > 300000)
+            if (taxableIncome > 300000)
             {
                 tax += 0.07m * 300000;
             }
@@ -24,7 +26,7 @@ namespace Payroll.Services
                 return tax;
             }
 
-            if(taxableIncome > 600000)
+            if (taxableIncome > 600000)
             {
                 tax += 0.11m * 300000;
             }

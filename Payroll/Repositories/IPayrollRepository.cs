@@ -8,5 +8,6 @@ namespace Payroll.Repositories
 {
     public interface IPayrollRepository
     {
+
     }
 }
