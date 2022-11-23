@@ -27,7 +27,7 @@ namespace Payroll.Services
                 return new PAYEResopnse
                 {
                     Status = false,
-                    Message = $"Employee not found"
+                    Message = $"Employee with email {email} not found"
                 };
             }
 
@@ -49,7 +49,7 @@ namespace Payroll.Services
                 return new PAYEResopnse
                 {
                     Status = false,
-                    Message = $"Employee not found"
+                    Message = $"Employee with email {email} not found"
                 };
             }
 
@@ -71,7 +71,7 @@ namespace Payroll.Services
                 return new SalaryResponse
                 {
                     Status = false,
-                    Message = $"Employee not found"
+                    Message = $"Employee with email {email} not found"
                 };
             }
 
