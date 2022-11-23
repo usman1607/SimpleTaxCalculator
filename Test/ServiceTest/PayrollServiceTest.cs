@@ -8,18 +8,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Test.TaxServiceTest
+namespace Test.ServiceTest
 {
     public class PayrollServiceTest
     {
-        private readonly TaxService _taxService;
         private readonly PayrollService _payrollService;
         private readonly Mock<ITaxService> _taxServiceMock = new Mock<ITaxService>();
         private readonly Mock<IEmployeeRepository> _employeeRepositoryMock = new Mock<IEmployeeRepository>();
 
         public PayrollServiceTest()
         {
-            _taxService = new TaxService();
             _payrollService = new PayrollService(_employeeRepositoryMock.Object, _taxServiceMock.Object);
         }
 
@@ -45,7 +43,7 @@ namespace Test.TaxServiceTest
             var salary = GetFakeEmployee()[0].AnnualSalary;  //4,000,000
             var expected = 464240m;
 
-            _taxServiceMock.Setup(x => x.CalculateTax(salary)).Returns(_taxService.CalculateTax(salary));
+            _taxServiceMock.Setup(x => x.CalculateTax(salary)).Returns(expected);
             _employeeRepositoryMock.Setup(x => x.GetEmployee(email)).Returns(GetFakeEmployee()[0]);            
 
             //Act
@@ -81,7 +79,7 @@ namespace Test.TaxServiceTest
                PAYE                 5,019,200
              * 
              */
-            _taxServiceMock.Setup(x => x.CalculateTax(salary)).Returns(_taxService.CalculateTax(salary));
+            _taxServiceMock.Setup(x => x.CalculateTax(salary)).Returns(expected);
             _employeeRepositoryMock.Setup(x => x.GetEmployee(email)).Returns(GetFakeEmployee()[2]);
 
             //Act
@@ -97,9 +95,10 @@ namespace Test.TaxServiceTest
             //Arrange
             var email = GetFakeEmployee()[0].Email;
             var salary = GetFakeEmployee()[0].AnnualSalary;  //4,000,000
+            var paye = 464240m;
             var expected = 38686.67m;
 
-            _taxServiceMock.Setup(x => x.CalculateTax(salary)).Returns(_taxService.CalculateTax(salary));
+            _taxServiceMock.Setup(x => x.CalculateTax(salary)).Returns(paye);
             _employeeRepositoryMock.Setup(x => x.GetEmployee(email)).Returns(GetFakeEmployee()[0]);
 
             //Act
@@ -115,10 +114,11 @@ namespace Test.TaxServiceTest
             //Arrange
             var email = GetFakeEmployee()[2].Email;
             var salary = GetFakeEmployee()[2].AnnualSalary;  //30,000,000
+            var paye = 5019200m;
             var expected = 418266.67m;
 
             
-            _taxServiceMock.Setup(x => x.CalculateTax(salary)).Returns(_taxService.CalculateTax(salary));
+            _taxServiceMock.Setup(x => x.CalculateTax(salary)).Returns(paye);
             _employeeRepositoryMock.Setup(x => x.GetEmployee(email)).Returns(GetFakeEmployee()[2]);
 
             //Act
@@ -134,9 +134,10 @@ namespace Test.TaxServiceTest
             //Arrange
             var email = GetFakeEmployee()[0].Email;
             var salary = GetFakeEmployee()[0].AnnualSalary;  //4,000,000
+            var paye = 464240m;
             var expected = 294646.67m;
 
-            _taxServiceMock.Setup(x => x.CalculateTax(salary)).Returns(_taxService.CalculateTax(salary));
+            _taxServiceMock.Setup(x => x.CalculateTax(salary)).Returns(paye);
             _employeeRepositoryMock.Setup(x => x.GetEmployee(email)).Returns(GetFakeEmployee()[0]);
 
             //Act
@@ -152,10 +153,11 @@ namespace Test.TaxServiceTest
             //Arrange
             var email = GetFakeEmployee()[2].Email;
             var salary = GetFakeEmployee()[2].AnnualSalary;  //30,000,000
+            var paye = 5019200m;
             var expected = 2081733.33m;
 
 
-            _taxServiceMock.Setup(x => x.CalculateTax(salary)).Returns(_taxService.CalculateTax(salary));
+            _taxServiceMock.Setup(x => x.CalculateTax(salary)).Returns(paye);
             _employeeRepositoryMock.Setup(x => x.GetEmployee(email)).Returns(GetFakeEmployee()[2]);
 
             //Act

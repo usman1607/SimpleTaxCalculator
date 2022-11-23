@@ -16,6 +16,11 @@ namespace Payroll.Services
 
             decimal taxableIncome = GetTaxableIncome(grossIncome);
 
+            if(taxableIncome < (0.01m * grossIncome))
+            {
+                return (0.01m * grossIncome);
+            }
+
             if (taxableIncome > 300000)
             {
                 tax += 0.07m * 300000;
